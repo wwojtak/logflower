@@ -1,0 +1,15 @@
+CREATE TABLE flowlogs
+(
+    Timestamp Date,
+    Time DateTime,
+    InterfaceID String,
+    SrcAddr String,
+    DstAddr String,
+    SrcPort UInt16,
+    DstPort UInt16,
+    Protocol String,
+    Packets UInt64,
+    Bytes UInt64,
+    Start UInt64,
+    End UInt64
+) ENGINE = MergeTree(Timestamp, (Packets, Bytes, Start, End), 8192)
